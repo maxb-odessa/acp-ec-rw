@@ -1,4 +1,7 @@
 #! /bin/bash
+#
+# set custom fan curves for MSI Katana A17 B8VF laptop
+#
 
 export PATH=/usr/local/sbin:$PATH:
 
@@ -31,9 +34,11 @@ while [ $N -lt 8 ]; do
 	N=$[$N+1]
 done
 
-#exit
+# comment out to write
+exit
 
-echo "== Setting..."
+
+# LAPTOP DEFAULTS for reference
 
 # FAN 1:
 #curr temp = 0x68: 0x37 ( 55)
@@ -59,6 +64,8 @@ echo "== Setting..."
 #0x87: 0x55 ( 85) => 0x90: 0x50 ( 80)
 # 0x88: 0x64 (100) => 0x91: 0x64 (100)
 
+echo "== Setting up curves..."
+
 # FAN1 temp and speed
 #acpi-ec-rw 0x69 0 && acpi-ec-rw 0x72 10
 acpi-ec-rw 0x6a 55 && acpi-ec-rw 0x73 20
@@ -78,5 +85,4 @@ acpi-ec-rw 0x85 70 && acpi-ec-rw 0x8e 65
 acpi-ec-rw 0x86 80 && acpi-ec-rw 0x8f 75
 acpi-ec-rw 0x87 85 && acpi-ec-rw 0x90 85
 # acpi-ec-rw 0x88 100 && acpi-ec-rw 0x91 100
-
 
